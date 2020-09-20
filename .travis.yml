@@ -2,16 +2,16 @@ sudo: required
 services:
     - docker
 before_install:
-    - docker build -t koagyu/complex-test -f ./client/Dockerfile.dev ./client
+    - docker build -t $DOCKER_ID/complex-test -f ./client/Dockerfile.dev ./client
 after_success:
-    - docker build -t koagyu/complex-client ./client
-    - docker build -t koagyu/complex-nginx ./nginx
-    - docker build -t koagyu/complex-server ./server
-    - docker build -t koagyu/complex-worker ./worker
+    - docker build -t $DOCKER_ID/complex-client ./client
+    - docker build -t $DOCKER_ID/complex-nginx ./nginx
+    - docker build -t $DOCKER_ID/complex-server ./server
+    - docker build -t $DOCKER_ID/complex-worker ./worker
     # Login to Docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --paswword-stdin
     # Take those images and push them to Docker
-    - docker push koagyu/complex-client
-    - docker push koagyu/complex-nginx
-    - docker push koagyu/complex-server
-    - docker push koagyu/complex-worker
+    - docker push $DOCKER_ID/complex-client
+    - docker push $DOCKER_ID/complex-nginx
+    - docker push $DOCKER_ID/complex-server
+    - docker push $DOCKER_ID/complex-worker
