@@ -1,6 +1,7 @@
 sudo: required
 services:
     - docker
+
 before_install:
     - docker build -t $DOCKER_ID/complex-test -f ./client/Dockerfile.dev ./client
 after_success:
@@ -9,7 +10,7 @@ after_success:
     - docker build -t $DOCKER_ID/complex-server ./server
     - docker build -t $DOCKER_ID/complex-worker ./worker
     # Login to Docker CLI
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --paswword-stdin
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # Take those images and push them to Docker
     - docker push $DOCKER_ID/complex-client
     - docker push $DOCKER_ID/complex-nginx
