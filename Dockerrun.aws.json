@@ -10,12 +10,14 @@
         },
         {
             "name": "server",
+            "memory": 128,
             "image": "koagyu/complex-server",
             "hostname": "api",
             "essential": false
         },
         {
             "name": "worker",
+            "memory": 128,
             "image": "koagyu/complex-worker",
             "hostname": "worker",
             "essential": false
