@@ -3,6 +3,7 @@
     "containerDefinitions": [
         {
             "name": "client",
+            "memory": 128,
             "image": "koagyu/complex-client",
             "hostname": "client",
             "essential": false
@@ -21,6 +22,7 @@
         },
         {
             "name": "nginx",
+            "memory": 128,
             "image": "koagyu/complex-nginx",
             "hostname": "nginx",
             "essential": true,
